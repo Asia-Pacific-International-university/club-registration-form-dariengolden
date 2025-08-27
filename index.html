@@ -43,15 +43,10 @@
 				</select>
 			</div>
 
-			<div>
+			<div id="interests-section" style="display: none;">
 				<label>Interests (select all that apply):</label>
-				<div class="checkbox-group">
-					<label><input type="checkbox" name="interests[]" value="coding"> Coding & Programming</label>
-					<label><input type="checkbox" name="interests[]" value="design"> Graphic Design</label>
-					<label><input type="checkbox" name="interests[]" value="music"> Music & Performance</label>
-					<label><input type="checkbox" name="interests[]" value="sports"> Sports & Athletics</label>
-					<label><input type="checkbox" name="interests[]" value="writing"> Writing & Literature</label>
-					<label><input type="checkbox" name="interests[]" value="volunteer"> Community Service</label>
+				<div id="interests-container" class="checkbox-group">
+					<!-- Interests will be dynamically loaded based on club selection -->
 				</div>
 			</div>
 
@@ -66,9 +61,79 @@
 		</form>
 	</main>
 
-	<footer>
-		<p>&copy; 2024 Student Club Registration System</p>
-	</footer>
-</body>
+    <footer>
+        <p>&copy; 2024 Student Club Registration System</p>
+    </footer>
 
+    <script>
+        // Dynamic interests based on club selection
+        document.getElementById('club').addEventListener('change', function() {
+            const club = this.value;
+            const interestsSection = document.getElementById('interests-section');
+            const interestsContainer = document.getElementById('interests-container');
+
+            if (club) {
+                // Show interests section with animation
+                interestsSection.style.display = 'block';
+                interestsSection.classList.add('show');
+
+                // Clear existing interests
+                interestsContainer.innerHTML = '';
+
+                // Add club-specific interests
+                const clubInterests = getClubInterests(club);
+                clubInterests.forEach(interest => {
+                    const label = document.createElement('label');
+                    label.innerHTML = `<input type="checkbox" name="interests[]" value="${interest.value}"> ${interest.label}`;
+                    interestsContainer.appendChild(label);
+                });
+            } else {
+                // Hide interests section
+                interestsSection.style.display = 'none';
+                interestsSection.classList.remove('show');
+            }
+        });
+
+        function getClubInterests(club) {
+            const interestsMap = {
+                'programming': [
+                    {value: 'coding', label: 'Coding & Programming'},
+                    {value: 'webdev', label: 'Web Development'},
+                    {value: 'databases', label: 'Database Design'},
+                    {value: 'algorithms', label: 'Algorithms & Data Structures'},
+                    {value: 'mobile', label: 'Mobile App Development'}
+                ],
+                'art': [
+                    {value: 'painting', label: 'Painting & Drawing'},
+                    {value: 'sculpture', label: 'Sculpture & Ceramics'},
+                    {value: 'digital', label: 'Digital Art & Graphics'},
+                    {value: 'photography', label: 'Photography'},
+                    {value: 'animation', label: 'Animation & Film'}
+                ],
+                'sports': [
+                    {value: 'basketball', label: 'Basketball'},
+                    {value: 'soccer', label: 'Soccer'},
+                    {value: 'tennis', label: 'Tennis'},
+                    {value: 'swimming', label: 'Swimming'},
+                    {value: 'fitness', label: 'Fitness Training'}
+                ],
+                'music': [
+                    {value: 'guitar', label: 'Guitar & Strings'},
+                    {value: 'piano', label: 'Piano & Keys'},
+                    {value: 'vocals', label: 'Vocals & Singing'},
+                    {value: 'composition', label: 'Music Composition'},
+                    {value: 'production', label: 'Music Production'}
+                ],
+                'drama': [
+                    {value: 'acting', label: 'Acting & Performance'},
+                    {value: 'directing', label: 'Directing & Production'},
+                    {value: 'stage', label: 'Stage Management'},
+                    {value: 'costume', label: 'Costume & Makeup'},
+                    {value: 'lighting', label: 'Lighting & Sound'}
+                ]
+            };
+            return interestsMap[club] || [];
+        }
+    </script>
+</body>
 </html>

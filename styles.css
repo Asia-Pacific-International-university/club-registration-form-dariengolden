@@ -253,12 +253,29 @@ input[type="submit"]:active {
     background-color: #c0392b;
 }
 
+/* Dynamic interests section */
+#interests-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+#interests-section.show {
+    opacity: 1;
+}
+
 /* Enhanced form fields styling */
 .checkbox-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-top: 8px;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .checkbox-group label {
@@ -267,11 +284,30 @@ input[type="submit"]:active {
     gap: 8px;
     font-weight: normal;
     cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.checkbox-group label:hover {
+    background-color: #e8f4fd;
 }
 
 .checkbox-group input[type="checkbox"] {
     width: auto;
     margin: 0;
+    accent-color: #3498db;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 textarea {
