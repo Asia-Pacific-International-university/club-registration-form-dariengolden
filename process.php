@@ -133,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "</body>";
     echo "</html>";
     }
-    } else {
+} else {
         // No errors - store registration and display success page
 
         // Store registration data in session array
