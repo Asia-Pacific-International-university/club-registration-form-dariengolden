@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Registration Form</title>
-    <!-- TODO: Link your CSS file here in Step 2 -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Club Registration Form</title>
+	<!-- TODO: Link your CSS file here in Step 2 -->
 </head>
+
 <body>
-    <header>
-        <h1>Student Club Registration</h1>
-        <p>Join one of our exciting student clubs!</p>
-    </header>
+	<header>
+		<h1>Student Club Registration</h1>
+		<p>Join one of our exciting student clubs!</p>
+	</header>
 
-    <main>
-        <!-- TODO: Create your form here in Step 1 -->
-        <!-- Requirements for Step 1:
-             - Form with POST method
-             - Action should point to process.php
-             - Name field (text input)
-             - Email field (email input)  
-             - Club selection (select dropdown with at least 3 options)
-             - Submit button
-        -->
-    </main>
+	<main>
+		<form action="process.php" method="post">
+			<div>
+				<label for="name">Full Name:</label>
+				<input type="text" id="name" name="name" required>
+			</div>
 
-    <footer>
-        <p>&copy; 2024 Student Club Registration System</p>
-    </footer>
+			<div>
+				<label for="email">Email Address:</label>
+				<input type="email" id="email" name="email" required>
+			</div>
+
+			<div>
+				<label for="club">Select Your Club:</label>
+				<select id="club" name="club" required>
+					<option value="">Choose a club...</option>
+					<option value="programming">Programming Club</option>
+					<option value="art">Art Club</option>
+					<option value="sports">Sports Club</option>
+					<option value="music">Music Club</option>
+					<option value="drama">Drama Club</option>
+				</select>
+			</div>
+
+			<div>
+				<input type="submit" name="submit" value="Register for Club">
+			</div>
+		</form>
+	</main>
+
+	<footer>
+		<p>&copy; 2024 Student Club Registration System</p>
+	</footer>
 </body>
+
 </html>
